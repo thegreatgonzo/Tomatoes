@@ -1,0 +1,98 @@
+<?php header('Content-Type:image/svg+xml');
+$row = 1;
+if (($handle = fopen("https://docs.google.com/spreadsheets/d/18TOwvpabd9h3kr7M1KnKS6DmWS3L9XZtYLetv1VKOmM/export?format=csv&id=18TOwvpabd9h3kr7M1KnKS6DmWS3L9XZtYLetv1VKOmM&gid=0", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 5000, ",")) !== FALSE) {
+        $num = count($data);
+
+        if ($row=='2'){
+          $taken = $data[1];
+        }
+
+        if ($row=='1'){
+          $total = $data[1];
+        }
+        
+        
+
+        $row++;
+    }
+    fclose($handle);
+    $ratio = $taken/$total;
+    $angle = deg2rad(sprintf('%.01f',(360*$ratio)-90 ));
+    $x = 1000 - (500 + (500 * cos($angle)));
+    $y = (500 + (500 * sin($angle)));
+}?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="1000"
+   viewBox="0 0 1000 1000"
+   id="svg4138"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="circle.svg">
+  <defs
+     id="defs4140" />
+  
+  <metadata
+     id="metadata4143">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     >
+    <circle
+       style="fill:#f60000;fill-opacity:0;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4686"
+       cx="500"
+       cy="500"
+       r="500" />
+       <circle
+       style="fill:#f60000;fill-opacity:1;stroke:none;stroke-width:10.62992096;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4686"
+       cx="500"
+       cy="500"
+       r="500" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:10.62992096;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M500 500 L 500 0 A 500 500 0 0 1 <?php print "$x $y"?> Z"
+       id="rect4708"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+     inkscape:connector-curvature="0"
+     id="path5"
+     d="m 238.48174,28.793708 c -24.83916,-2.281351 -68.48887,-0.77356 -94.15303,32.053864 -2.46845,3.163617 -7.36906,2.74082 -9.21799,-0.824851 L 119.07783,29.103283 C 115.37969,21.953622 107.49226,18.619826 101.5616,21.695091 L 85.385113,30.08321 c -5.93065,3.075266 -7.75057,11.442688 -4.04516,18.588579 l 16.98377,32.753213 c 1.60367,3.092672 0.0171,6.888558 -3.34188,7.836227 -15.11898,4.266397 -52.858,18.276941 -76.27056,56.123261 -3.205,5.17988 3.26077,11.06062 8.08182,7.32343 14.2928,-11.07705 34.04544,-23.84027 50.96508,-25.57782 4.433,-0.46121 7.57535,4.29893 5.38883,8.18431 -6.59946,11.68604 -17.23716,36.2046 -15.01665,69.99271 0.37795,5.75039 8.31844,6.96066 10.58311,1.65898 8.82445,-20.67901 25.253417,-51.01678 48.186947,-59.39073 2.70215,-0.98566 5.69487,0.0848 6.98293,2.65787 7.26043,14.53596 32.85196,63.44411 54.38245,75.81591 3.3943,1.95178 7.67581,-0.0837 8.26034,-3.96012 2.18259,-14.36335 4.29694,-50.54697 -18.77077,-93.37703 -1.51527,-2.81533 -0.43374,-6.30316 2.45329,-7.68016 11.02367,-5.27298 38.21228,-15.48399 68.79709,-6.18212 5.01221,1.52836 9.0643,-4.13693 6.08985,-8.44861 -8.14036,-11.799004 -24.991,-27.289991 -57.82589,-29.054022 -4.98631,-0.267558 -7.30451,-6.323006 -3.55102,-9.608191 7.58301,-6.637486 21.50605,-16.433252 46.61182,-28.417384 5.09301,-2.447013 3.76445,-10.012845 -1.84877,-10.527805 z"
+     style="fill:#88c057" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:100px;line-height:125%;font-family:'PT Sans Caption';-inkscape-font-specification:'PT Sans Caption, Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="200"
+     y="500"
+     id="text4134"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4136"
+       x="200"
+       y="500"><?php printf('%.01f',$ratio*100 ); print '%';?></tspan></text>
+</svg>
